@@ -1,0 +1,20 @@
+Here is <%= @band.name %> 's page!
+
+<ul>
+  <li>Name of band: <%= @band.name %></li>
+</ul>
+
+<form action="<%= edit_band_url %>" method="get">
+  <%= auth_token %>
+  <input type="submit" name="" value="Edit Band!">
+</form>
+
+<br>
+
+<form action="<%= band_url %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <%= auth_token %>
+  <input type="submit" value="Delete Band Forever!">
+</form>
+
+<a href="<%= bands_url %>">Back to all bands!</a>

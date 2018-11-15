@@ -1,0 +1,21 @@
+<form class="" action="<%= band_url %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+    <%= auth_token %>
+
+    <% if flash.now[:errors] %>
+      <% flash.now[:errors].each do |error| %>
+        <%= error %>
+        <br>
+      <% end %>
+      Please fill out form again!
+      <br>
+    <% end %>
+
+  <label>
+    Band name:
+    <input type="text" name="band[name]" value="<%= @band.name %>">
+  </label>
+
+  <input type="submit" name="" value="Confirm Edits!">
+
+</form>

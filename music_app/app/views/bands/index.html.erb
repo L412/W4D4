@@ -1,0 +1,12 @@
+Here is a list of all the bands!
+
+<ul>
+  <% @bands.each do |band| %>
+    <ul>
+      <li><%= band.name  %></li>
+      <ul>
+        <a href=" <%= band_url(band) %> ">Click here for band's page!</a>
+      </ul>
+    </ul>
+  <% end %>
+</ul>
