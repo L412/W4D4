@@ -2,11 +2,24 @@ Here is <%= @band.name %> 's page!
 
 <ul>
   <li>Name of band: <%= @band.name %></li>
+  <li>Albums:
+    <ul>
+      <% @band.albums.each do |album| %>
+        <a href="<%= album_url(album) %>"><%= album.title %> </a>
+        <br>
+      <% end %>
+    </ul>
+  </li>
 </ul>
 
 <form action="<%= edit_band_url %>" method="get">
   <%= auth_token %>
-  <input type="submit" name="" value="Edit Band!">
+  <input type="submit" name="" value="Edit Band Information">
+</form>
+
+<form action="<%= new_band_album_url(@band) %>" method="get">
+  <%= auth_token %>
+  <input type="submit" name="" value="Add Band Album">
 </form>
 
 <br>

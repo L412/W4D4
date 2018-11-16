@@ -1,0 +1,19 @@
+This is the page for <%= @album.band.name %>'s album <%= @album.title %>!
+<br>
+Here is information about the album:
+<br>
+<ul>
+  <li>Band's Name: <%= @album.band.name %> </li>
+  <li>Album Name: <%= @album.title  %></li>
+  <li>Release Year: <%= @album.year %> </li>
+  <li>Recorded Live? <%= @album.live? %> </li>
+</ul>
+
+<br>
+<a href="<%= band_url(@album.band) %>">Back to band's homepage!</a>
+
+<form action="<%= album_url(@album)  %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete Album!">
+</form>

@@ -1,0 +1,40 @@
+Add a new album for <%= @band.name %>!
+
+<form action= <%= albums_url %> method="post">
+  <%= auth_token %>
+  <label>
+    Album title:
+    <input type="text" name="album[title]" value="">
+  </label>
+  <br>
+  <label>
+    Year:
+    <input type="text" name="album[year]" value="">
+  </label>
+  <br>
+
+  Recorded Live?
+  <label>
+    Yes
+    <input type="radio" name="album[live?]" value="T">
+  </label>
+  <label>
+    No
+    <input type="radio" name="album[live?]" value="F">
+  </label>
+  <br>
+
+  Band Name:
+
+  <input type="hidden" name="album[band_id]" value="<%=@band.id%>">
+
+  <input type="submit" value="Create new album!">
+</form>
+
+<form action="<%= band_url(@band) %>" method="get">
+  <input type="submit" value="Return to band's homepage">
+</form>
+
+<form action="<%= bands_url %>" method="get">
+  <input type="submit" value="Return to All Bands">
+</form>
