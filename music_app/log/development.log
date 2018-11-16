@@ -7570,3 +7570,406 @@ Processing by AlbumsController#new as HTML
 Completed 200 OK in 37ms (Views: 33.9ms | ActiveRecord: 1.2ms)
 
 
+Started GET "/bands" for 127.0.0.1 at 2018-11-15 20:40:50 -0800
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Lar/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by BandsController#index as HTML
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (1.6ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:4
+  Rendered bands/index.html.erb within layouts/application (87.3ms)
+Completed 200 OK in 699ms (Views: 596.3ms | ActiveRecord: 68.5ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at 2018-11-15 20:41:21 -0800
+Processing by BandsController#new as HTML
+  Rendering bands/new.html.erb within layouts/application
+  Rendered bands/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 27ms (Views: 26.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/bands" for 127.0.0.1 at 2018-11-15 20:41:26 -0800
+Processing by BandsController#create as HTML
+  Parameters: {"authenticity_token"=>"RRKhELd823KN0L57M4aNtxGd0JugCRclT48BtBBS+Hx5UMWpBUy43aNBWTtaej8SpO28NP+a/3u4lvDUDpyuUg==", "band"=>{"name"=>"SKERRY"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:15
+  [1m[36mBand Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "bands" WHERE "bands"."name" = $1 LIMIT $2[0m  [["name", "SKERRY"], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:15
+  [1m[36mBand Create (22.8ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "SKERRY"], ["created_at", "2018-11-16 04:41:26.275877"], ["updated_at", "2018-11-16 04:41:26.275877"]]
+  ↳ app/controllers/bands_controller.rb:15
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bands_controller.rb:15
+Redirected to http://localhost:3000/bands/11
+Completed 302 Found in 35ms (ActiveRecord: 25.6ms)
+
+
+Started GET "/bands/11" for 127.0.0.1 at 2018-11-15 20:41:26 -0800
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:24
+  Rendering bands/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."band_id" = $1[0m  [["band_id", 11]]
+  ↳ app/views/bands/show.html.erb:7
+  Rendered bands/show.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 95ms (Views: 86.0ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/bands/11/albums/new?authenticity_token=FX4%2B%2FbsHxAJcXjNoc3id%2Fdm5aV4EbHf4Mnq0cTzRLU4pPFpECTenrXLP1CgahC9YbMkF8Vv%2Fn6bFY0URIh97YA%3D%3D" for 127.0.0.1 at 2018-11-15 20:41:28 -0800
+Processing by AlbumsController#new as HTML
+  Parameters: {"authenticity_token"=>"FX4+/bsHxAJcXjNoc3id/dm5aV4EbHf4Mnq0cTzRLU4pPFpECTenrXLP1CgahC9YbMkF8Vv/n6bFY0URIh97YA==", "band_id"=>"11"}
+  [1m[36mBand Load (1.1ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 44ms (Views: 25.7ms | ActiveRecord: 5.3ms)
+
+
+Started POST "/albums" for 127.0.0.1 at 2018-11-15 20:41:37 -0800
+Processing by AlbumsController#create as HTML
+  Parameters: {"authenticity_token"=>"3+30PF3np+zGq0NcU5QMj/wQtK26Ppyk/VwHWfGWEJHjr5CF79fEQ+g6pBw6aL4qSWDYAuWtdPoKRfY571hGvw==", "album"=>{"title"=>"LOL", "year"=>"69", "live?"=>"F", "band_id"=>"11"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:16
+  [1m[36mBand Load (0.7ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:16
+  [1m[36mAlbum Create (7.4ms)[0m  [1m[32mINSERT INTO "albums" ("title", "year", "band_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "LOL"], ["year", 69], ["band_id", 11], ["created_at", "2018-11-16 04:41:37.268641"], ["updated_at", "2018-11-16 04:41:37.268641"]]
+  ↳ app/controllers/albums_controller.rb:16
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:16
+Redirected to http://localhost:3000/albums/10
+Completed 302 Found in 27ms (ActiveRecord: 14.4ms)
+
+
+Started GET "/albums/10" for 127.0.0.1 at 2018-11-15 20:41:37 -0800
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:30
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/albums/show.html.erb:1
+  Rendered albums/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 27ms (Views: 23.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bands/11" for 127.0.0.1 at 2018-11-15 20:41:42 -0800
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mBand Load (0.7ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:24
+  Rendering bands/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."band_id" = $1[0m  [["band_id", 11]]
+  ↳ app/views/bands/show.html.erb:7
+  Rendered bands/show.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 32ms (Views: 28.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/albums/10" for 127.0.0.1 at 2018-11-15 20:41:44 -0800
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mAlbum Load (4.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:30
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/albums/show.html.erb:1
+  Rendered albums/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 38ms (Views: 31.0ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/bands/11" for 127.0.0.1 at 2018-11-15 20:41:45 -0800
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mBand Load (2.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:24
+  Rendering bands/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."band_id" = $1[0m  [["band_id", 11]]
+  ↳ app/views/bands/show.html.erb:7
+  Rendered bands/show.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 44ms (Views: 38.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/albums/10" for 127.0.0.1 at 2018-11-15 20:41:47 -0800
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mAlbum Load (4.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:30
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mBand Load (0.7ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/albums/show.html.erb:1
+  Rendered albums/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 43ms (Views: 35.2ms | ActiveRecord: 5.1ms)
+
+
+Started DELETE "/albums/10" for 127.0.0.1 at 2018-11-15 20:41:49 -0800
+Processing by AlbumsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wI0hnVQ7erwzyI68MwdKJvqdLLUdUT9tPLW8Iq3P46H8z0Uk5gsZEx1Zafxa+/iDT+1AGkLC1zPLrE1CswG1jw==", "id"=>"10"}
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:40
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:41
+  [1m[36mAlbum Destroy (0.6ms)[0m  [1m[31mDELETE FROM "albums" WHERE "albums"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/albums_controller.rb:41
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:41
+Redirected to http://localhost:3000/bands/11
+Completed 302 Found in 10ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/bands/11" for 127.0.0.1 at 2018-11-15 20:41:49 -0800
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:24
+  Rendering bands/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."band_id" = $1[0m  [["band_id", 11]]
+  ↳ app/views/bands/show.html.erb:7
+  Rendered bands/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 37ms (Views: 34.4ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/bands/11" for 127.0.0.1 at 2018-11-15 20:41:54 -0800
+Processing by BandsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"QEf/DexttwFUiBtkxTcSSH7HPVySI7oIWdB5VmD8c6h8BZu0Xl3UrnoZ/CSsy6Dty7dR882wUlauyYg2fjIlhg==", "id"=>"11"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:45
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:46
+  [1m[36mBand Destroy (0.6ms)[0m  [1m[31mDELETE FROM "bands" WHERE "bands"."id" = $1[0m  [["id", 11]]
+  ↳ app/controllers/bands_controller.rb:46
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bands_controller.rb:46
+Redirected to http://localhost:3000/bands
+Completed 302 Found in 8ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/bands" for 127.0.0.1 at 2018-11-15 20:41:54 -0800
+Processing by BandsController#index as HTML
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:4
+  Rendered bands/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 31ms (Views: 30.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new?authenticity_token=OcLF%2FE3WNRx%2BtxtA8wtwS%2BWbCWNNPeRGNQ1aIwNgNKIFgKFF%2F%2BZWs1Am%2FACa98LuUOtlzBKuDBjCFKtDHa5ijA%3D%3D" for 127.0.0.1 at 2018-11-15 20:42:02 -0800
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"OcLF/E3WNRx+txtA8wtwS+WbCWNNPeRGNQ1aIwNgNKIFgKFF/+ZWs1Am/ACa98LuUOtlzBKuDBjCFKtDHa5ijA=="}
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 23ms (Views: 22.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-11-15 20:42:14 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"Srw2awrHLK9MDMAssIM9vPkqrXTVloYb2XpF7va0nn52/lLSuPdPAGKdJ2zZf48ZTFrB24oFbkUuY7SO6HrIUA==", "user"=>{"email"=>"kerry@kerry.gov", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kerry@kerry.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hJMhX-4sl_ShLrBEjbEWXA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kerry@kerry.gov"], ["password_digest", "$2a$10$YWjziXlO0mEZ/an44iSlf.cIDRrcyw8.W2G8IyPAmXfFbyIH82hkm"], ["session_token", "hJMhX-4sl_ShLrBEjbEWXA"], ["created_at", "2018-11-16 04:42:14.105285"], ["updated_at", "2018-11-16 04:42:14.105285"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 106ms (ActiveRecord: 13.0ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2018-11-15 20:42:14 -0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 26ms (Views: 23.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/sessions/new?authenticity_token=eWHYer9JieT0wZ1wlPSa5IFvTWfBGP9MrAL1q34eDflFI7zDDXnqS9pQejD9CChBNB8hyJ6LFxJbGwTLYNBb1w%3D%3D" for 127.0.0.1 at 2018-11-15 20:42:21 -0800
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"eWHYer9JieT0wZ1wlPSa5IFvTWfBGP9MrAL1q34eDflFI7zDDXnqS9pQejD9CChBNB8hyJ6LFxJbGwTLYNBb1w=="}
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 28ms (Views: 27.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new?authenticity_token=i0%2BEzLUNQmQ4t30v7u6EiDVizZCm2i9duWzfJPgNY1W3DeB1Bz0hyxYmmm%2BHEjYtgBKhP%2FlJxwNOdS5E5sM1ew%3D%3D" for 127.0.0.1 at 2018-11-15 20:42:30 -0800
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"i0+EzLUNQmQ4t30v7u6EiDVizZCm2i9duWzfJPgNY1W3DeB1Bz0hyxYmmm+HEjYtgBKhP/lJxwNOdS5E5sM1ew=="}
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 28ms (Views: 27.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-11-15 20:42:36 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"t75RyRDdceO7U+QQe3aOom77iHBzSvETLAtNw7Fc1oeL/DVwou0STJXCA1ASijwH24vk3yzZGU3bEryjr5KAqQ==", "user"=>{"email"=>"kerry@kerry.gov", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kerry@kerry.gov"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:43
+Completed 200 OK in 73ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-11-15 20:42:43 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"t75RyRDdceO7U+QQe3aOom77iHBzSvETLAtNw7Fc1oeL/DVwou0STJXCA1ASijwH24vk3yzZGU3bEryjr5KAqQ==", "user"=>{"email"=>"kerry@kerry.gov", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kerry@kerry.gov"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:43
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:29
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "kerry@kerry.gov"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "hJMhX-4sl_ShLrBEjbEWXA"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:29
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 79ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2018-11-15 20:42:43 -0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hJMhX-4sl_ShLrBEjbEWXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hJMhX-4sl_ShLrBEjbEWXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+Completed 200 OK in 27ms (Views: 24.5ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/sessions/3" for 127.0.0.1 at 2018-11-15 20:42:56 -0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"X5dC/DLgdauDYKTnhBuu8k16mDFISRiC8ltVzbbkOkBj1SZFgNAWBK3xQ6ft5xxX+Ar0nhfa8NwFQqStqCpsbg==", "id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hJMhX-4sl_ShLrBEjbEWXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:29
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "kerry@kerry.gov"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "hJMhX-4sl_ShLrBEjbEWXA"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:29
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2018-11-15 20:42:56 -0800
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 26ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new?authenticity_token=OyypzLOwtvA1Z%2BwDKWOcRtyutHnAUBJ93QbHh8pt6l0Hbs11AYDVXxv2C0NAny7jad7Y1p%2FD%2BiMqHzbn1KO8cw%3D%3D" for 127.0.0.1 at 2018-11-15 20:43:00 -0800
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"OyypzLOwtvA1Z+wDKWOcRtyutHnAUBJ93QbHh8pt6l0Hbs11AYDVXxv2C0NAny7jad7Y1p/D+iMqHzbn1KO8cw=="}
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 25ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new?authenticity_token=co0iJAKCG%2BsnoOjm3KA1KxRdjqL1lohAtzKEDJgqcgdOz0adsLJ4RAkxD6a1XIeOoS3iDaoFYB5AK3VshuQkKQ%3D%3D" for 127.0.0.1 at 2018-11-15 20:43:01 -0800
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"co0iJAKCG+snoOjm3KA1KxRdjqL1lohAtzKEDJgqcgdOz0adsLJ4RAkxD6a1XIeOoS3iDaoFYB5AK3VshuQkKQ=="}
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new?authenticity_token=ImtvPpDIsmHwT8eHQOMQNBe1UOVI7yriv8UQnKM60bEeKQuHIvjRzt7eIMcpH6KRosU8Shd8wrxI3OH8vfSHnw%3D%3D" for 127.0.0.1 at 2018-11-15 20:43:02 -0800
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"ImtvPpDIsmHwT8eHQOMQNBe1UOVI7yriv8UQnKM60bEeKQuHIvjRzt7eIMcpH6KRosU8Shd8wrxI3OH8vfSHnw=="}
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 26ms (Views: 25.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new?authenticity_token=mRgG0LN%2FLa1byTHiuIWd0hp4JGqcSnA6tm39Lg%2BJWJKlWmJpAU9OAnVY1qLReS93rwhIxcPZmGRBdAxOEUcOvA%3D%3D" for 127.0.0.1 at 2018-11-15 20:43:02 -0800
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"mRgG0LN/La1byTHiuIWd0hp4JGqcSnA6tm39Lg+JWJKlWmJpAU9OAnVY1qLReS93rwhIxcPZmGRBdAxOEUcOvA=="}
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 23ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new?authenticity_token=hHs5wxXYRWtBzzbHBTksvQEBKBbx2ywnmhkwiQiVzfu4OV16p%2BgmxG9e0YdsxZ4YtHFEua5IxHltAMHpFlub1Q%3D%3D" for 127.0.0.1 at 2018-11-15 20:43:02 -0800
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"hHs5wxXYRWtBzzbHBTksvQEBKBbx2ywnmhkwiQiVzfu4OV16p+gmxG9e0YdsxZ4YtHFEua5IxHltAMHpFlub1Q=="}
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 25ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new?authenticity_token=oU6C0al6R8x7cLDq0Mv0Qrkm7GcxfNci%2FyI8rFuNQSSdDOZoG0okY1XhV6q5N0bnDFaAyG7vP3wIO83MRUMXCg%3D%3D" for 127.0.0.1 at 2018-11-15 20:43:03 -0800
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"oU6C0al6R8x7cLDq0Mv0Qrkm7GcxfNci/yI8rFuNQSSdDOZoG0okY1XhV6q5N0bnDFaAyG7vP3wIO83MRUMXCg=="}
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 25ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new?authenticity_token=bigV80WEuHLJzwc7wju%2BrSL94ZeM8S6kxy1zg54QJ3JSanFK97Tb3ede4HurxwwIl42NONNixvowNILjgN5xXA%3D%3D" for 127.0.0.1 at 2018-11-15 20:43:03 -0800
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"bigV80WEuHLJzwc7wju+rSL94ZeM8S6kxy1zg54QJ3JSanFK97Tb3ede4HurxwwIl42NONNixvowNILjgN5xXA=="}
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 27ms (Views: 26.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new?authenticity_token=4PmNYaHoke1RisGUAjiBic7WS3FYeN4B1gCzcOQj4Srcu%2BnYE9jyQn8bJtRrxDMse6Yn3gfrNl8hGUIQ%2Bu23BA%3D%3D" for 127.0.0.1 at 2018-11-15 20:43:04 -0800
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"4PmNYaHoke1RisGUAjiBic7WS3FYeN4B1gCzcOQj4Srcu+nYE9jyQn8bJtRrxDMse6Yn3gfrNl8hGUIQ+u23BA=="}
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 23.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-11-15 20:45:05 -0800
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 29ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bands" for 127.0.0.1 at 2018-11-15 20:48:52 -0800
+Processing by BandsController#index as HTML
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:4
+  Rendered bands/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 32ms (Views: 30.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/bands/10" for 127.0.0.1 at 2018-11-15 20:48:56 -0800
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mBand Load (3.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:24
+  Rendering bands/show.html.erb within layouts/application
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."band_id" = $1[0m  [["band_id", 10]]
+  ↳ app/views/bands/show.html.erb:7
+  Rendered bands/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 32ms (Views: 26.0ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/bands/100000" for 127.0.0.1 at 2018-11-15 20:49:05 -0800
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"100000"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 100000], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:24
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Band with 'id'=100000:
+  app/controllers/bands_controller.rb:24:in `show'
+
+Started POST "/__better_errors/e82aa8edd75096b1/variables" for 127.0.0.1 at 2018-11-15 20:49:05 -0800
+Started POST "/__better_errors/e82aa8edd75096b1/eval" for 127.0.0.1 at 2018-11-15 20:49:17 -0800
