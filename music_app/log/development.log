@@ -7560,3 +7560,13 @@ Processing by BandsController#show as HTML
 Completed 200 OK in 27ms (Views: 24.4ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/bands/10/albums/new?authenticity_token=%2BmEXwKYD9wEewPxbqUTzcpbia4DfeG8Oeu1ppmN5ph77ds7QTU%2BQTKnlcumWvgHsR9Xi8urgmHg3c1QHMTl7HQ%3D%3D" for 127.0.0.1 at 2018-11-15 18:24:17 -0800
+Processing by AlbumsController#new as HTML
+  Parameters: {"authenticity_token"=>"+mEXwKYD9wEewPxbqUTzcpbia4DfeG8Oeu1ppmN5ph77ds7QTU+QTKnlcumWvgHsR9Xi8urgmHg3c1QHMTl7HQ==", "band_id"=>"10"}
+  [1m[36mBand Load (1.2ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:4
+  Rendering albums/new.html.erb within layouts/application
+  Rendered albums/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 37ms (Views: 33.9ms | ActiveRecord: 1.2ms)
+
+

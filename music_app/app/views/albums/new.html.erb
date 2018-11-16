@@ -24,8 +24,10 @@ Add a new album for <%= @band.name %>!
   </label>
   <br>
 
-  Band Name:
-
+  <!-- Why do I have to do this? Why isn't the below information
+  Just passed down as a wild_card in the url?
+  Without this, the AlbumController #create doesn't have access
+  to the band_id, and so @band becomes nil and everything breaks -->
   <input type="hidden" name="album[band_id]" value="<%=@band.id%>">
 
   <input type="submit" value="Create new album!">
